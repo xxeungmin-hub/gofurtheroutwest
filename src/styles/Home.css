@@ -1,0 +1,534 @@
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
+
+
+.home-page {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #000;
+  color: #fff;
+  font-family: "Pretendard", sans-serif;
+}
+
+
+
+.home-hero {
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 600px;
+
+  overflow: hidden;
+  background: #000;
+}
+
+
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background: rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+
+
+.hero-header {
+  position: absolute;
+  top: clamp(35px, 6.5vh, 90px);
+  left: 0;
+  right: 0;
+  z-index: 5;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr) auto minmax(0, 1fr);
+
+  align-items: center;
+  gap: 20px;
+
+  padding-inline: clamp(24px, 4vw, 80px);
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 3.1vw, 48px);
+
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.nav-left {
+  justify-content: flex-start;
+}
+
+.nav-right {
+  justify-content: flex-end;
+}
+
+
+
+.header-logo {
+  width: clamp(120px, 10vw, 165px);
+  justify-self: center;
+}
+
+.header-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+
+.hero-content {
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  z-index: 2;
+
+  transform: translate(-50%, -50%);
+
+  width: 100%;
+  padding-inline: 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-title {
+  display: block;
+
+  width: min(82vw, 1250px);
+  max-width: 100%;
+  height: auto;
+
+}
+
+.hero-subtitle {
+  margin: 8px 0 0;
+
+  color: #fff;
+  font-size: clamp(16px, 1.7vw, 25px);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+
+
+.scroll-stamp {
+  position: absolute;
+  top: 61%;
+  right: 22%;
+  z-index: 3;
+
+  width: clamp(90px, 8.4vw, 120px);
+  aspect-ratio: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ed0000;
+  color: #fff;
+
+  font-size: 16px;
+  font-weight: 800;
+
+  border-radius:
+    47% 53% 49% 51% /
+    54% 45% 55% 46%;
+
+  transform: rotate(-8deg);
+}
+
+
+
+.lp-player {
+  position: absolute;
+
+  left: clamp(24px, 4.3vw, 80px);
+  bottom: 11%;
+  z-index: 4;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+
+
+.lp-button {
+  display: block;
+
+  width: clamp(180px, 15vw, 245px);
+
+  margin: 0;
+  padding: 0;
+
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.lp-button:hover {
+  transform: scale(1.05);
+}
+
+.lp-button img {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  box-shadow: none;
+  filter: none;
+}
+
+/* Sound On! */
+
+.lp-label {
+  position: relative;
+  z-index: 2;
+
+  margin-top: -30px;
+
+  font-size: clamp(16px, 1.7vw, 25px);
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+
+  text-shadow: none;
+  filter: none;
+}
+
+
+
+@media (max-width: 1200px) {
+  .nav-left,
+  .nav-right {
+    gap: 18px;
+    font-size: 15px;
+  }
+
+  .header-logo {
+    width: 120px;
+  }
+}
+
+
+
+@media (max-width: 900px) {
+  .hero-header {
+    top: 24px;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 20px;
+  }
+
+  .header-logo {
+    grid-row: 1;
+  }
+
+  .nav-left,
+  .nav-right {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 13px;
+  }
+
+  .hero-title {
+    width: 92vw;
+  }
+
+  .scroll-stamp {
+    right: 10%;
+    top: 62%;
+  }
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-button {
+    transition: none;
+  }
+}
+
+
+
+
+.home-hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 35%;
+  z-index: 1;
+
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.45) 45%,
+    #000 100%
+  );
+
+  pointer-events: none;
+}
+
+
+/* =================================
+   BRAND OVERVIEW
+================================= */
+
+.brand-overview {
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  min-height: 1500px;
+  padding: 55px 0 320px;
+
+  background-color: #000;
+  background-image: url("/images/overview-bg.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: #fff;
+  overflow: hidden;
+}
+
+
+.brand-overview::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.45) 72%,
+    rgba(0, 0, 0, 0.62) 82%,
+    rgba(0, 0, 0, 0.90) 94%,
+    #000 100%
+  );
+  pointer-events: none;
+}
+
+
+.brand-overview::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 360px;
+  z-index: 1;
+
+  background: linear-gradient(
+    to bottom,
+    #000 0%,
+    rgba(0, 0, 0, 0.65) 35%,
+    transparent 100%
+  );
+
+  pointer-events: none;
+}
+
+
+.overview-content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+
+.overview-top {
+  width: 100%;
+  padding-inline: 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.overview-heading {
+  margin: 0;
+  color: #fff;
+  font-family: "Pretendard", sans-serif;
+
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+
+.overview-text {
+  margin: 0;
+  max-width: 900px;
+
+  color: #fff;
+  font-family: "Pretendard", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.45;
+
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+
+.overview-top .overview-english {
+  margin-top: 42px;
+  max-width: 780px;
+}
+
+
+.overview-top .overview-korean {
+  margin-top: 65px;
+  max-width: 1000px;
+}
+
+/* =================================
+   WESTERN LANDSCAPE SVG
+================================= */
+
+.overview-landscape {
+  width: 100%;
+  margin-top: 110px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overview-landscape img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+
+  object-fit: contain;
+}
+
+/* =================================
+   BOTTOM DESCRIPTION
+================================= */
+
+.overview-bottom {
+  width: 100%;
+  padding-inline: 24px;
+  margin-top: 100px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.overview-bottom .overview-english {
+  max-width: 880px;
+}
+
+
+.overview-bottom .overview-korean {
+  max-width: 1000px;
+  margin-top: 65px;
+}
+
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 900px) {
+
+  .brand-overview {
+    min-height: auto;
+    padding-top: 65px;
+    padding-bottom: 180px;
+  }
+
+  .overview-heading {
+    font-size: 24px;
+  }
+
+  .overview-text {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .overview-top .overview-english {
+    margin-top: 35px;
+  }
+
+  .overview-top .overview-korean {
+    margin-top: 55px;
+  }
+
+  .overview-landscape {
+    margin-top: 75px;
+  }
+
+  .overview-landscape img {
+    max-height: none;
+  }
+
+  .overview-bottom {
+    margin-top: 75px;
+  }
+
+  .overview-bottom .overview-korean {
+    margin-top: 50px;
+  }
+}
+
+
+.hero-transition {
+  width: 100%;
+  height: 350px;
+  background: #000;
+}

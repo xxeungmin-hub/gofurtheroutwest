@@ -1,0 +1,47 @@
+
+.graphic-poster-section {
+  position: relative;
+  width: 100%;
+  background: #000;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.graphic-poster-artwork {
+  display: grid;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.graphic-poster-metal,
+.graphic-poster-image {
+  grid-column: 1;
+  grid-row: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+}
+
+/* 아래 쇠 질감 */
+.graphic-poster-metal {
+  position: relative;
+  z-index: 1;
+  object-fit: fill;
+}
+
+/* 위 포스터 */
+.graphic-poster-image {
+  position: relative;
+  z-index: 2;
+  height: auto;
+}
+
+/* PC, iMac 화면 모두 가로폭에 맞춤 */
+@media (max-width: 900px) {
+  .graphic-poster-artwork {
+    width: 100%;
+  }
+}

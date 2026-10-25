@@ -1,0 +1,200 @@
+.logo-variations-section {
+  position: relative;
+  width: 100%;
+  background: #000;
+  color: #fff;
+  padding: 180px 32px;
+  overflow: hidden;
+}
+
+.logo-variations-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.logo-variations-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 72px;
+  text-align: center;
+}
+
+.logo-variations-title {
+  margin: 0;
+  color: #ff1d0d;
+  font: 900 42px/1.1 "Pretendard", sans-serif;
+}
+
+.logo-variations-description {
+  margin: 24px 0 0;
+  color: rgba(255,255,255,.82);
+  font: 600 16px/1.7 "Pretendard", sans-serif;
+}
+
+.logo-variations-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 88px clamp(18px, 3vw, 54px);
+  align-items: center;
+  justify-items: center;
+}
+
+.logo-variation-item {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Vegas is painted above Zion when the black sequence background overlaps. */
+.logo-variation-item--zion { z-index: 1; }
+.logo-variation-item--vegas { z-index: 3; }
+
+.logo-hitbox {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-hitbox--zion,
+.logo-hitbox--vegas { cursor: pointer; }
+
+.logo-variation-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* The source sequences have black padding. Scale them visually, not the grid columns. */
+.logo-variation-image--zion {
+  transform: scale(1.5);
+  transform-origin: center;
+}
+.logo-variation-image--vegas {
+  transform: scale(1.6);
+  transform-origin: center;
+}
+
+@media (max-width: 900px) {
+  .logo-variations-section { padding: 140px 20px; }
+  .logo-variations-title { font-size: 34px; }
+  .logo-variations-description { font-size: 14px; line-height: 1.6; }
+  .logo-variations-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 48px 24px;
+  }
+}
+
+/* Sequence frames stay on one canvas; no image swapping or first-play decode flashes. */
+.logo-sequence-stage {
+  position: relative;
+  width: 100%;
+}
+.logo-sequence-stage canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* Only the middle portion of each logo cell is hover-sensitive. */
+.logo-sequence-hitarea {
+  position: absolute;
+  z-index: 5;
+  left: 15%;
+  top: 25%;
+  width: 70%;
+  height: 50%;
+  cursor: pointer;
+}
+.logo-sequence-loading {
+  position: absolute;
+  font-size: 11px;
+  color: rgba(255,255,255,.4);
+  pointer-events: none;
+}
+
+/* Route 66 크기 조절 */
+.logo-sequence-stage--route66 canvas {
+  transform: scale(1.2);
+  transform-origin: center;
+}
+
+/* Monument Valley 크기 */
+.logo-sequence-stage--monument canvas {
+  transform: scale(1.3);
+  transform-origin: center center;
+}
+/* Blue Swallow Motel 크기 */
+.logo-sequence-stage--blue canvas {
+  transform: scale(1.5);
+  transform-origin: center center;
+}
+
+
+/* Blue Swallow Motel 전체 위치 조절 */
+.logo-variation-item--blue {
+  position: relative;
+  top: -50px;
+}
+
+/* Blue Swallow Motel 위치 및 레이어 */
+.logo-variation-item--blue {
+  position: relative;
+  top: -40px;
+  z-index: 10;
+}
+
+/* Zion Canyon 레이어 */
+.logo-variation-item--zion {
+  position: relative;
+  z-index: 1;
+}
+
+/* Horseshoe Bend 크기 및 위치 */
+.logo-sequence-stage--horseshoe canvas {
+  transform: scale(1.4);
+  transform-origin: center center;
+}
+
+/* Horseshoe Bend - 위치 및 레이어 */
+.logo-variation-item--horseshoe {
+  position: relative;
+  top: 25px;
+  z-index: 20;
+}
+
+/* Blue Swallow Motel - 레이어 */
+.logo-variation-item--blue {
+  z-index: 10;
+}
+/* Pioneertown - 크기/위치/레이어 */
+.logo-variation-item--pioneer {
+  position: relative;
+  top: 25px;
+  z-index: 20;
+}
+
+.logo-sequence-stage--pioneer canvas {
+  transform: scale(1.55);
+  transform-origin: center center;
+}
+
+
+/* Death Valley - 크기, 위치, 레이어 */
+.logo-variation-item--death {
+  position: relative;
+  top: 18px;
+  z-index: 30;
+}
+
+.logo-sequence-stage--death canvas {
+  transform: scale(1.2);
+  transform-origin: center center;
+}
+

@@ -1,0 +1,32 @@
+/* 두 섹션이 같은 배경 레이어 하나를 공유한다. */
+.western-shared-background {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #080a0d;
+}
+.western-shared-images {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.western-shared-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.16);
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+.western-shared-image.is-active { opacity: 1; }
+.western-shared-shade { position: absolute; inset: 0; background: rgba(0,0,0,.68); }
+.western-shared-content { position: relative; z-index: 1; }
+/* 원래 Logo Grid의 로컬 배경만 숨긴다. SVG/숫자/애니메이션 영향 없음 */
+.western-shared-background .logo-grid-section { background: transparent; }
+.western-shared-background .logo-grid-background { display: none; }
+/* 상단 그라데이션은 Logo Grid 안에 그대로 남긴다. */
+.western-shared-background .logo-grid-overlay { display: none; }
