@@ -198,3 +198,10 @@
   transform-origin: center center;
 }
 
+
+/* 큰 화면(iMac)에서만 Logo Variations 확장 */
+@media (min-width: 1600px) {
+  .logo-variations-inner {
+    max-width: 1800px;
+  }
+}
