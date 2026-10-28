@@ -1,0 +1,182 @@
+.zion-campaign-section {
+  position: relative;
+  width: 100%;
+  background: #000;
+  overflow: hidden;
+  padding: 220px 0 40px;
+}
+
+.zion-campaign-inner {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  min-height: 1200px;
+  padding: 0 60px;
+  box-sizing: border-box;
+}
+
+/* 헤딩 */
+.zion-campaign-heading {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 90px;
+}
+
+.zion-campaign-title {
+  margin: 0;
+  color: #f2f2f2;
+  font-family: Impact, "Arial Narrow", sans-serif;
+  font-size: clamp(72px, 8.4vw, 180px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.zion-campaign-subtitle {
+  margin: 26px 0 0;
+  color: #f2f2f2;
+  font-family: "Pretendard", sans-serif;
+  font-size: clamp(16px, 1.2vw, 22px);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* 이미지 배치 영역 */
+.zion-campaign-visuals {
+  position: relative;
+  width: 100%;
+  min-height: 900px;
+}
+
+/* 공통 */
+.zion-campaign-shot,
+.zion-campaign-wall-object {
+  position: absolute;
+  display: block;
+  height: auto;
+  max-width: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* 왼쪽 작은 연출샷 */
+.zion-campaign-shot-left {
+  width: 36vw;
+  left: 4%;
+  top: 110px;
+}
+
+/* 오른쪽 큰 연출샷 */
+.zion-campaign-shot-right {
+  width: min(39vw, 590px);
+  right: 8%;
+  top: 88px;
+  z-index: 2;
+}
+
+/* 아래 벽에 붙어있는 PNG */
+.zion-campaign-wall-object {
+  position: absolute;
+  width: min(42vw, 630px);
+
+  left: -60px;
+  bottom: 0;
+  z-index: 1;
+
+  display: block;
+  height: auto;
+  max-width: none;
+}
+
+/* 반응형 */
+@media (max-width: 1200px) {
+  .zion-campaign-inner {
+    min-height: 1080px;
+    padding: 0 40px;
+  }
+
+  .zion-campaign-heading {
+    margin-bottom: 72px;
+  }
+
+  .zion-campaign-visuals {
+    min-height: 820px;
+  }
+
+  .zion-campaign-shot-left {
+    width: 28vw;
+    left: 5%;
+    top: 30px;
+  }
+
+  .zion-campaign-shot-right {
+    width: 36vw;
+    right: 7%;
+    top: 92px;
+  }
+
+  .zion-campaign-wall-object {
+    width: 38vw;
+    left: -2%;
+  }
+}
+
+@media (max-width: 900px) {
+  .zion-campaign-section {
+    padding: 150px 0 30px;
+  }
+
+  .zion-campaign-inner {
+    min-height: 960px;
+    padding: 0 24px;
+  }
+
+  .zion-campaign-heading {
+    margin-bottom: 60px;
+  }
+
+  .zion-campaign-subtitle {
+    margin-top: 20px;
+  }
+
+  .zion-campaign-visuals {
+    min-height: 720px;
+  }
+
+  .zion-campaign-shot-left {
+    width: 36vw;
+    left: 4%;
+    top: 25px;
+  }
+
+  .zion-campaign-shot-right {
+    width: 44vw;
+    right: 2%;
+    top: 110px;
+  }
+
+  .zion-campaign-wall-object {
+    width: 44vw;
+    left: -4%;
+    bottom: 0;
+  }
+}
+/* 연출샷과 하단 암석 PNG 사이 간격 확보 */
+
+.zion-campaign-visuals {
+  min-height: 1400px;
+}
+
+@media (max-width: 1200px) {
+  .zion-campaign-visuals {
+    min-height: 1600px;
+  }
+}
+
+@media (max-width: 900px) {
+  .zion-campaign-visuals {
+    min-height: 1300px;
+  }
+}

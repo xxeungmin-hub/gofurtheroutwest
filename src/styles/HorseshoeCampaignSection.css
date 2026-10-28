@@ -1,0 +1,19 @@
+/* All campaign images keep their original aspect ratio; no object-fit:cover. */
+.horseshoe-campaign-section { padding:clamp(90px,10vw,150px) 0 45px; }
+.horseshoe-campaign-inner { width:100%; max-width:1600px; min-height:0; padding:0 clamp(28px,8vw,150px); }
+.horseshoe-campaign-heading { margin-bottom:clamp(60px,7vw,110px); }
+.horseshoe-campaign-gallery { width:min(100%,1320px); margin:0 auto; display:flex; flex-direction:column; gap:clamp(22px,3vw,42px); }
+.horseshoe-campaign-row { display:grid; align-items:start; gap:clamp(18px,3vw,42px); }
+.horseshoe-campaign-row-top { grid-template-columns:minmax(0,1fr) minmax(0,1fr); }
+.horseshoe-campaign-row-bottom { grid-template-columns:minmax(0,1fr) minmax(0,2.05fr); }
+.horseshoe-campaign-row img { display:block; width:100%; height:auto; max-width:100%; object-fit:contain; }
+/* Match Route 66's tighter vertical rhythm */
+.collection-page--horseshoe-bend .zion-product-story-section { padding-top:70px; padding-bottom:50px; }
+.collection-page--horseshoe-bend .zion-other-collections { padding-top:55px; }
+.collection-page--horseshoe-bend .zion-product-story-glow { width:100%; }
+@media(max-width:900px) {
+ .horseshoe-campaign-section { padding:85px 0 35px; }
+ .horseshoe-campaign-inner { padding:0 24px; }
+ .horseshoe-campaign-gallery { gap:16px; }
+ .horseshoe-campaign-row { gap:16px; }
+}

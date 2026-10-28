@@ -1,145 +1,455 @@
+
+/* ======================================
+   SELECTED PLACES
+====================================== */
+
 .selected-places-section {
-  --place-card-width: clamp(250px, 23.6vw, 340px);
-  --place-card-gap: 20px;
-  --place-slide-seconds: 48s;
   position: relative;
   width: 100%;
-  overflow: hidden;
-  padding: 105px 0 135px;
-  color: #fff;
+  padding: 105px 0 110px;
   background: transparent;
+  color: #fff;
+  overflow: hidden;
   font-family: "Pretendard", sans-serif;
 }
-.selected-places-copy {
-  position: relative;
-  margin: 0 auto 115px;
-  max-width: 1120px;
-  padding: 0 24px;
-  text-align: center;
+
+.selected-places-inner {
+  width: min(1560px, calc(100% - 48px));
+  margin: 0 auto;
 }
-.selected-places-copy h2 {
-  margin: 0 0 22px;
+
+.selected-places-header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.selected-places-title {
+  margin: 0;
   color: #e20a04;
   font-size: 42px;
   font-weight: 900;
-  letter-spacing: -.035em;
   line-height: 1.15;
 }
-.selected-places-copy p {
-  margin: 0;
+
+.selected-places-description {
+  margin: 26px 0 0;
+  color: rgba(255, 255, 255, .9);
   font-size: 16px;
   font-weight: 600;
   line-height: 1.75;
   word-break: keep-all;
 }
-.selected-places-viewport { position: relative; width: 100%; overflow: hidden; }
-.selected-places-track {
-  display: flex;
-  width: max-content;
-  animation: selected-places-marquee var(--place-slide-seconds) linear infinite;
-  will-change: transform;
-}
-.selected-places-viewport.is-paused .selected-places-track,
-.selected-places-viewport:hover .selected-places-track,
-.selected-places-viewport:focus-within .selected-places-track { animation-play-state: paused; }
-.selected-places-set { display: flex; flex: none; gap: var(--place-card-gap); padding-right: var(--place-card-gap); }
-.selected-place-card {
+
+/* ======================================
+   MAIN SCENE
+====================================== */
+
+.sticker-experience {
   position: relative;
-  display: block;
-  flex: none;
-  width: var(--place-card-width);
-  aspect-ratio: 340 / 485;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,.18);
-  background: #262327;
-  color: #fff;
-  text-decoration: none;
+  width: 100%;
+}
+
+.sticker-stage {
+  position: relative;
+  width: 100%;
+  height: 790px;
+  margin: 0 auto;
   isolation: isolate;
 }
-/* 사진은 카드당 한 장. 카드 전체를 덮고 그 위에 유리 효과를 적용 */
-.selected-place-photo {
+
+/* ======================================
+   PACK - 600 x 900
+====================================== */
+
+.sticker-pack {
   position: absolute;
-  inset: -18px;
-  width: calc(100% + 36px);
-  height: calc(100% + 36px);
-  object-fit: cover;
-  display: block;
-  filter: blur(13px);
-  transform: scale(1.02);
-  transition: filter .6s ease, transform .6s ease;
+  z-index: 5;
+  left: 50%;
+  top: 0;
+  width: clamp(380px, 39vw, 580px);
+  transform: translateX(-50%);
+  pointer-events: none;
 }
-.selected-place-glass {
+
+.sticker-pack-art {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 600 / 900;
+}
+
+/* PNG 두 장은 동일한 600x900 좌표 */
+.pack-paper,
+.pack-vinyl {
   position: absolute;
   inset: 0;
-  z-index: 1;
-  background: rgba(225,218,210,.09);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.13);
-  pointer-events: none;
-  transition: background .6s ease;
-}
-/* 진짜 피그마 레터링+장소별 로고 투명 PNG를 카드에 겹침 */
-.selected-place-graphic {
-  position: absolute;
-  z-index: 3;
-  inset: 4% 4% auto;
   display: block;
-  width: 92%;
-  height: 62%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  object-position: center;
-  opacity: 0;
   pointer-events: none;
-  transition: transform .45s ease;
+  user-select: none;
 }
-.selected-place-graphic.is-ready { opacity: 1; }
-/* PNG 미준비 시 텍스트만 표시: 사진 중복 표시 방지 */
-.selected-place-placeholder {
+
+/* 비닐이 내부 스티커보다 앞 */
+.pack-vinyl {
+  z-index: 3;
+  transition:
+    transform .95s cubic-bezier(.22, 1, .36, 1),
+    opacity .8s ease,
+    filter .8s ease;
+}
+
+/* 종이는 가장 앞 */
+.pack-paper {
+  z-index: 4;
+  transform-origin: 50% 28%;
+  transition:
+    transform 1s cubic-bezier(.22, 1, .36, 1),
+    opacity .75s ease,
+    filter .75s ease;
+}
+
+/* ======================================
+   INSIDE STICKERS
+====================================== */
+
+/*
+  내부 스티커 영역은 600x900 캔버스 기준.
+  비닐의 가운데 투명한 영역만 사용.
+  포장 바깥으로 튀어나온 부분은 잘림.
+*/
+
+.pack-preview {
   position: absolute;
   z-index: 2;
+
+  left: 17%;
+  top: 33%;
+  width: 66%;
+  height: 54%;
+
+  background: transparent;
+  overflow: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity .28s ease,
+    transform .75s ease;
+}
+
+.pack-preview-item {
+  position: absolute;
+  display: block;
+  height: auto;
+  max-width: none;
+  object-fit: contain;
+  transform-origin: center;
+}
+
+/* ======================================
+   PACKAGE OPENING
+====================================== */
+
+/* 종이가 오른쪽 위로 열리면서 사라짐 */
+.is-opened .pack-paper {
+  transform:
+    translate(145px, -85px)
+    rotate(16deg)
+    scale(.93);
+
+  opacity: 0;
+  filter: blur(12px);
+}
+
+/* 비닐은 뒤로 작아지면서 사라짐 */
+.is-opened .pack-vinyl {
+  transform:
+    translateY(18px)
+    scale(.78);
+
+  opacity: 0;
+  filter: blur(16px);
+}
+
+/* 포장 안쪽 스티커는 바깥 스티커와 교체 */
+.is-opened .pack-preview {
+  opacity: 0;
+  transform: scale(.85);
+  transition-delay: .12s;
+}
+
+/* 애니메이션이 끝나면 포장 레이어 숨김 */
+.is-opened .sticker-pack {
+  visibility: hidden;
+  transition: visibility 0s linear 1.15s;
+}
+
+/* 닫을 때 즉시 복구 */
+.sticker-pack {
+  transition: visibility 0s;
+}
+
+/* ======================================
+   SCATTERED STICKERS
+====================================== */
+
+.stickers-scatter-layer {
+  position: absolute;
   inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 26px 12px 38%;
-  text-align: center;
-  color: #ed2419;
+  z-index: 3;
   pointer-events: none;
 }
-.selected-place-placeholder strong { font-size: clamp(20px,2vw,30px); font-weight: 900; line-height: 1.05; text-transform: uppercase; }
-.selected-place-placeholder span { font-family: Georgia,serif; font-weight: 800; font-size: clamp(14px,1.5vw,22px); }
-.selected-place-arrow {
+
+.scatter-sticker {
   position: absolute;
-  z-index: 4;
-  right: 15px;
-  bottom: 13px;
-  width: 54px;
+
+  /* 스티커팩 중심에서 출발 */
+  left: 50%;
+  top: 41%;
+  width: var(--sticker-w);
+
+  opacity: 0;
+  pointer-events: none;
+  text-decoration: none;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(0deg)
+    scale(.28);
+
+  transition:
+    left 1.15s cubic-bezier(.2, .8, .2, 1),
+    top 1.15s cubic-bezier(.2, .8, .2, 1),
+    transform 1.15s cubic-bezier(.2, .8, .2, 1),
+    opacity .3s ease;
+
+  transition-delay: 0s;
+  will-change: transform;
+}
+
+.scatter-sticker img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+
+  filter:
+    drop-shadow(0 9px 6px rgba(0, 0, 0, .2));
+}
+
+.is-opened .scatter-sticker {
+  left: var(--sticker-x);
+  top: var(--sticker-y);
+
+  opacity: 1;
+  pointer-events: auto;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--sticker-r))
+    scale(1);
+
+  transition-delay: var(--sticker-delay);
+}
+
+/* 호버 */
+.is-opened .scatter-sticker:hover,
+.is-opened .scatter-sticker:focus-visible {
+  z-index: 10;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--sticker-r))
+    scale(1.1);
+
+  transition-delay: 0s;
+}
+
+.scatter-sticker:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 6px;
+}
+
+/* ======================================
+   CLICK INDICATOR
+====================================== */
+
+.sticker-click-trigger {
+  position: absolute;
+  z-index: 20;
+
+  left: calc(50% + 350px);
+  top: 57%;
+
+  width: 110px;
+  height: 110px;
+
+  transform: translate(-50%, -50%);
+
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.trigger-ring,
+.trigger-dot {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.trigger-ring {
+  width: 65px;
+  height: 65px;
+
+  border: 2px solid rgba(255, 255, 255, .5);
+
+  animation:
+    stickerPulse 2.3s ease-out infinite;
+}
+
+.trigger-ring-2 {
+  animation-delay: 1.15s;
+}
+
+.trigger-dot {
+  width: 20px;
+  height: 20px;
+  background: #fff;
+}
+
+.trigger-text {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
   color: #fff;
-  transition: transform .3s ease;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .22em;
 }
-.selected-place-arrow svg { display: block; width: 100%; }
-.selected-place-card:hover .selected-place-photo,
-.selected-place-card:focus-visible .selected-place-photo { filter: blur(7px); transform: scale(1.035); }
-.selected-place-card:hover .selected-place-glass,
-.selected-place-card:focus-visible .selected-place-glass { background: rgba(255,255,255,.035); }
-.selected-place-card:hover .selected-place-arrow,
-.selected-place-card:focus-visible .selected-place-arrow { transform: translate(4px,-2px); }
-.selected-place-card:focus-visible { outline: 2px solid white; outline-offset: -2px; }
-@keyframes selected-places-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@media (max-width: 900px) {
-  .selected-places-section { --place-card-width: 280px; --place-card-gap: 14px; padding: 85px 0 105px; }
-  .selected-places-copy { margin-bottom: 70px; }
-  .selected-places-copy h2 { font-size: 34px; }
-  .selected-places-copy p { font-size: 14px; }
+
+@keyframes stickerPulse {
+  0% {
+    opacity: .8;
+    transform:
+      translate(-50%, -50%)
+      scale(.5);
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(-50%, -50%)
+      scale(1.8);
+  }
 }
-@media (max-width: 600px) {
-  .selected-places-section { --place-card-width: 235px; padding: 75px 0 90px; }
-  .selected-places-copy { padding: 0 20px; margin-bottom: 48px; }
-  .selected-places-copy h2 { font-size: 30px; }
-  .selected-places-desktop-break { display: none; }
+
+/* ======================================
+   REPACK BUTTON
+====================================== */
+
+.sticker-repack {
+  display: block;
+  position: relative;
+  z-index: 10;
+
+  margin: 8px auto 0;
+  padding: 12px 26px;
+
+  border: 1px solid rgba(255,255,255,.55);
+  background: transparent;
+  color: #fff;
+
+  font: 700 13px "Pretendard", sans-serif;
+  letter-spacing: .12em;
+  cursor: pointer;
+
+  transition: background .25s ease;
 }
+
+.sticker-repack:hover {
+  background: rgba(255,255,255,.12);
+}
+
+/* ======================================
+   RESPONSIVE
+====================================== */
+
+@media (max-width: 1100px) {
+  .sticker-stage {
+    height: 730px;
+  }
+
+  .sticker-pack {
+    width: min(48vw, 520px);
+  }
+
+  .sticker-click-trigger {
+    left: calc(50% + 29vw);
+  }
+}
+
+@media (max-width: 700px) {
+  .selected-places-section {
+    padding: 80px 0;
+  }
+
+  .selected-places-inner {
+    width: calc(100% - 24px);
+  }
+
+  .selected-places-title {
+    font-size: 32px;
+  }
+
+  .selected-places-description {
+    font-size: 14px;
+  }
+
+  .selected-places-desktop-break {
+    display: none;
+  }
+
+  .sticker-stage {
+    height: 620px;
+  }
+
+  .sticker-pack {
+    width: min(78vw, 400px);
+  }
+
+  .sticker-click-trigger {
+    left: 83%;
+    top: 68%;
+
+    transform:
+      translate(-50%, -50%)
+      scale(.7);
+  }
+
+  .scatter-sticker {
+    width: calc(var(--sticker-w) * 1.15);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .selected-places-track { animation: none; }
-  .selected-places-viewport { overflow-x: auto; }
-  .selected-place-photo,.selected-place-glass,.selected-place-arrow { transition: none; }
+  .pack-paper,
+  .pack-vinyl,
+  .pack-preview,
+  .scatter-sticker {
+    transition-duration: .01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .trigger-ring {
+    animation: none;
+  }
 }

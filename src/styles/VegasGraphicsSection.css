@@ -1,0 +1,175 @@
+
+.vegas-graphics-section {
+  width: 100%;
+  background: #000;
+  overflow: hidden;
+  padding: 150px 0 100px;
+}
+
+/* 상단 콜라주 */
+
+.vegas-graphics-top {
+  position: relative;
+  width: min(94%, 1500px);
+  margin: 0 auto;
+}
+
+.vegas-graphics-main {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(12px, 2vw, 32px);
+  align-items: center;
+}
+
+.vegas-graphics-main-item {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* 상단 이미지의 개별 배치 */
+
+.vegas-graphics-main-1 {
+  transform: translateY(75px) rotate(-12deg);
+}
+
+.vegas-graphics-main-2 {
+  transform: translateY(0) rotate(5deg);
+}
+
+.vegas-graphics-main-3 {
+  transform: translateY(90px) rotate(-8deg);
+}
+
+.vegas-graphics-main-4 {
+  transform: translateY(10px) rotate(7deg);
+}
+
+/* 중간에 들어가는 스티커 */
+
+.vegas-graphics-stickers {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: -30px;
+  padding: 0 14%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.vegas-graphics-sticker {
+  display: block;
+  width: clamp(85px, 12vw, 170px);
+  height: auto;
+}
+
+.vegas-graphics-sticker-1 {
+  transform: translate(-45px, -75px) rotate(-12deg);
+}
+
+.vegas-graphics-sticker-2 {
+  transform: translate(45px, 10px) rotate(15deg);
+}
+
+/* 하단 네온사인 4개 */
+
+.vegas-graphics-neon {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: center;
+
+  width: min(96%, 1600px);
+  gap: clamp(15px, 2.5vw, 45px);
+  margin: 85px auto 0;
+}
+
+.vegas-graphics-neon img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* 반응형 */
+
+@media (max-width: 1200px) {
+  .vegas-graphics-section {
+    padding-top: 120px;
+  }
+
+  .vegas-graphics-neon {
+    margin-top: 65px;
+  }
+}
+
+@media (max-width: 900px) {
+  .vegas-graphics-section {
+    padding: 90px 0 70px;
+  }
+
+  .vegas-graphics-main {
+    gap: 10px;
+  }
+
+  .vegas-graphics-main-1 {
+    transform: translateY(35px) rotate(-10deg);
+  }
+
+  .vegas-graphics-main-3 {
+    transform: translateY(45px) rotate(-8deg);
+  }
+
+  .vegas-graphics-stickers {
+    margin-top: 10px;
+    padding: 0 10%;
+  }
+
+  .vegas-graphics-sticker {
+    width: clamp(65px, 12vw, 110px);
+  }
+
+  .vegas-graphics-sticker-1 {
+    transform: translate(-15px, -25px) rotate(-12deg);
+  }
+
+  .vegas-graphics-sticker-2 {
+    transform: translate(15px, 0) rotate(15deg);
+  }
+
+  .vegas-graphics-neon {
+    margin-top: 50px;
+    gap: 12px;
+  }
+}
+.vegas-graphics-neon {
+  margin-top: 45px;
+}
+
+@media (max-width: 1200px) {
+  .vegas-graphics-neon {
+    margin-top: 35px;
+  }
+}
+
+@media (max-width: 900px) {
+  .vegas-graphics-neon {
+    margin-top: 25px;
+  }
+}
+/* VEGAS VIC - 하단 섹션 간격 축소 */
+
+.collection-page--vegas-vic
+.zion-product-story-section {
+  padding-bottom: 90px;
+}
+
+.collection-page--vegas-vic
+.zion-other-collections {
+  padding-top: 65px;
+}
+/* Vegas Vic 제품 뒤 빛 번짐 크기 축소 */
+.collection-page--vegas-vic .zion-product-story-glow {
+  width: 70%;
+}

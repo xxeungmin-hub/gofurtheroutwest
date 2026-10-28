@@ -1,0 +1,56 @@
+/* Route 66: four campaign photos, their original aspect ratios preserved */
+.route66-campaign-section {
+  padding: clamp(90px, 11vw, 170px) 0 110px;
+}
+.route66-campaign-inner {
+  width: min(100%, 1600px);
+  max-width: 1600px;
+  min-height: 0;
+  padding: 0 clamp(24px, 7vw, 110px);
+}
+.route66-campaign-heading {
+  margin-bottom: clamp(55px, 5vw, 90px);
+}
+.route66-campaign-gallery {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: start;
+  column-gap: clamp(14px, 2vw, 30px);
+  row-gap: clamp(26px, 3vw, 46px);
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.route66-campaign-cell {
+  min-width: 0;
+  min-height: 0;
+  height: auto;
+  overflow: visible;
+}
+.route66-campaign-cell-1 { grid-column: span 8; }
+.route66-campaign-cell-2 { grid-column: span 4; }
+.route66-campaign-cell-3 { grid-column: span 5; }
+.route66-campaign-cell-4 { grid-column: span 7; }
+.route66-campaign-cell img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+@media (max-width: 900px) {
+  .route66-campaign-section { padding: 90px 0 65px; }
+  .route66-campaign-inner { padding: 0 24px; }
+  .route66-campaign-gallery { column-gap: 12px; row-gap: 24px; }
+}
+
+/* Route 66 only: shorten product story -> Explore More spacing */
+.collection-page--route-66 .zion-product-story-section {
+  padding-bottom: 35px;
+}
+.collection-page--route-66 .zion-other-collections {
+  padding-top: 35px;
+}
+@media (max-width: 900px) {
+  .collection-page--route-66 .zion-product-story-section { padding-bottom: 25px; }
+  .collection-page--route-66 .zion-other-collections { padding-top: 25px; }
+}

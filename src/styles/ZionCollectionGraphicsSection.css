@@ -1,0 +1,152 @@
+.zion-collection-graphics-section {
+  position: relative;
+  width: 100%;
+  background: #000;
+  overflow: hidden;
+  padding: 120px 0 0;
+}
+
+.zion-collection-graphics-inner {
+  position: relative;
+  width: 100%;
+  background: #000;
+}
+
+/* 그래픽들 묶음 */
+
+/* 그래픽 전체 영역 */
+.zion-graphics-cluster {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  z-index: 2;
+}
+
+/* 그래픽 공통 */
+.zion-graphic-card,
+.zion-graphic-sticker {
+  position: absolute;
+  display: block;
+  height: auto;
+  max-width: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* 검정 카드 - 왼쪽 앞 */
+.zion-graphic-card-black {
+  width: min(46vw, 700px);
+  left: 11%;
+  top: 100px;
+  transform: rotate(-14deg);
+  z-index: 3;
+}
+
+/* 흰 카드 - 가운데 뒤 */
+.zion-graphic-card-white {
+  width: min(43vw, 650px);
+  left: 35%;
+  top: 135px;
+  transform: rotate(8deg);
+  z-index: 1;
+}
+
+/* ZION 스티커 - 오른쪽 맨 앞 */
+.zion-graphic-sticker {
+  width: min(34vw, 510px);
+  right: 8%;
+  top: 25px;
+  transform: rotate(24deg);
+  z-index: 4;
+}
+
+
+/* 아래 산맥 */
+
+.zion-ground-wrap {
+  position: relative;
+  width: 100%;
+  margin-top: -100px;
+  z-index: 1;
+  line-height: 0;
+}
+
+.zion-ground-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+/* 살짝 더 안정적인 아래 여백 */
+.zion-collection-graphics-section::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 24px;
+  background: #000;
+}
+
+/* 반응형 */
+@media (max-width: 1200px) {
+  .zion-collection-graphics-inner {
+    min-height: 660px;
+  }
+
+  .zion-graphics-cluster {
+    height: 360px;
+  }
+
+  .zion-graphic-card-black {
+    width: 50vw;
+    left: 7%;
+    top: 95px;
+  }
+
+  .zion-graphic-card-white {
+    width: 45vw;
+    left: 36%;
+    top: 120px;
+  }
+
+  .zion-graphic-sticker {
+    width: 32vw;
+    right: 6%;
+    top: 22px;
+  }
+}
+
+@media (max-width: 900px) {
+  .zion-collection-graphics-section {
+    padding-top: 90px;
+  }
+
+  .zion-collection-graphics-inner {
+    min-height: 520px;
+  }
+
+  .zion-graphics-cluster {
+    height: 270px;
+  }
+
+  .zion-graphic-card-black {
+    width: 58vw;
+    left: 2%;
+    top: 88px;
+    transform: rotate(-12deg);
+  }
+
+  .zion-graphic-card-white {
+    width: 52vw;
+    left: 29%;
+    top: 108px;
+    transform: rotate(7deg);
+  }
+
+  .zion-graphic-sticker {
+    width: 40vw;
+    right: 1%;
+    top: 10px;
+    transform: rotate(18deg);
+  }
+}
