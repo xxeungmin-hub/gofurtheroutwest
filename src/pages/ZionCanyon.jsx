@@ -1,6 +1,7 @@
 
 import "../styles/Home.css";
 import "../styles/ZionCanyon.css";
+import "../styles/CollectionWideScreen.css";
 import ZionGallerySection from "../components/ZionGallerySection.jsx";
 import ZionCollectionGraphicsSection from "../components/ZionCollectionGraphicsSection.jsx";
 import ZionCampaignSection from "../components/ZionCampaignSection.jsx";

@@ -1,0 +1,21 @@
+/* Four original-ratio images, visually balanced in two asymmetric rows */
+.pioneer-campaign-section { width:100%; background:#000; color:#fff; padding:clamp(105px,10vw,165px) 0 70px; }
+.pioneer-campaign-inner { width:min(88%,1450px); margin:0 auto; }
+.pioneer-campaign-heading { text-align:center; margin-bottom:clamp(58px,7vw,110px); }
+.pioneer-campaign-heading h2 { margin:0; }
+.pioneer-campaign-title-image { display:block; width:min(54vw,760px); max-width:100%; height:auto; margin:0 auto; object-fit:contain; }
+.pioneer-campaign-fallback-title { font-family:Impact,sans-serif; font-size:clamp(45px,5.5vw,88px); }
+.pioneer-campaign-heading p { font:600 clamp(14px,1.2vw,19px)/1.5 "Pretendard",sans-serif; margin:23px 0 0; }
+.pioneer-campaign-photos { display:grid; grid-template-columns:36fr 24fr 40fr; gap:clamp(16px,2vw,32px); align-items:stretch; }
+.pioneer-campaign-photo { min-width:0; display:flex; align-items:center; justify-content:center; background:#000; overflow:visible; }
+.pioneer-campaign-photo img { display:block; width:100%; height:auto; max-width:100%; object-fit:contain; }
+/* Each row has an asymmetrical width split, matching the supplied Figma layout. */
+.pioneer-campaign-photo-1 { grid-column:1; grid-row:1; }
+.pioneer-campaign-photo-2 { grid-column:2 / 4; grid-row:1; }
+.pioneer-campaign-photo-3 { grid-column:1 / 3; grid-row:2; }
+.pioneer-campaign-photo-4 { grid-column:3; grid-row:2; }
+@media(max-width:900px) {
+  .pioneer-campaign-inner { width:92%; }
+  .pioneer-campaign-photos { gap:12px; }
+  .pioneer-campaign-title-image { width:min(72vw,660px); }
+}

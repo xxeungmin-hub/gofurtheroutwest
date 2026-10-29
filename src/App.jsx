@@ -1,44 +1,33 @@
-
 import { useState } from "react";
 
 import Intro from "./pages/IntroTemp.jsx";
 import Home from "./pages/Home.jsx";
 import ZionCanyon from "./pages/ZionCanyon.jsx";
 import CollectionDetail from "./pages/CollectionDetail.jsx";
+import CollectionsIndex from "./pages/CollectionsIndex.jsx";
 
 export default function App() {
-  const [showIntro, setShowIntro] = useState(
-    window.location.pathname === "/"
-  );
+  const pathname = window.location.pathname.replace(/\/$/, "") || "/";
+  const [showIntro, setShowIntro] = useState(pathname === "/");
 
-  const pathname = window.location.pathname;
+  // 기존 Zion Canyon 단독 상세 페이지는 그대로 사용
+  if (pathname === "/collections/zion-canyon") return <ZionCanyon />;
 
-  // 기존 Zion Canyon 상세 페이지
-  const isZionPage =
-    pathname === "/collections/zion-canyon";
+  // 신규 컬렉션 목록 페이지
+  if (pathname === "/collections") return <CollectionsIndex />;
 
-  // 새 공통 템플릿 테스트 주소
-  // 예: /collections-preview/zion-canyon
-  const previewMatch = pathname.match(
-    /^\/collections-preview\/([^/]+)\/?$/
-  );
+  // 기존 테스트 주소도 그대로 지원
+  const preview = pathname.match(/^\/collections-preview\/([^/]+)$/);
+  if (preview) return <CollectionDetail collectionId={preview[1]} />;
 
-  // 테스트 페이지
-  if (previewMatch) {
-    return (
-      <CollectionDetail
-        collectionId={previewMatch[1]}
-      />
-    );
-  }
+  // 6개 완성 컬렉션의 실제 URL (Zion은 위에서 처리)
+  const detail = pathname.match(/^\/collections\/([^/]+)$/);
+  if (detail) return <CollectionDetail collectionId={detail[1]} />;
 
   return (
     <>
-      {isZionPage ? <ZionCanyon /> : <Home />}
-
-      {!isZionPage && showIntro && (
-        <Intro onFinish={() => setShowIntro(false)} />
-      )}
+      <Home />
+      {showIntro && <Intro onFinish={() => setShowIntro(false)} />}
     </>
   );
 }

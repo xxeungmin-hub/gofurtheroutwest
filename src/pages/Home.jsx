@@ -7,6 +7,8 @@ import WesternSharedBackground from "../components/WesternSharedBackground.jsx";
 import LogoVariationsSection from "../components/LogoVariationsSection.jsx";
 
 import GraphicPosterSection from "../components/GraphicPosterSection.jsx";
+import PosterPairSection from "../components/PosterPairSection.jsx";
+import SiteFooter from "../components/SiteFooter.jsx";
 
 
 export default function Home() {
@@ -53,7 +55,7 @@ export default function Home() {
         <header className="hero-header">
           <nav className="nav-left">
             <span>Products</span>
-            <span>Collections</span>
+            <a className="header-nav-link" href="/collections">Collections</a>
             <span>Explore</span>
           </nav>
 
@@ -220,6 +222,9 @@ export default function Home() {
 
 <LogoVariationsSection />
 <GraphicPosterSection />
+<GraphicPosterSection variant="second" />
+<PosterPairSection />
+<SiteFooter />
     </main>
   );
 }

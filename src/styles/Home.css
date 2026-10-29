@@ -532,3 +532,12 @@
   height: 350px;
   background: #000;
 }
+/* Collections 메뉴 링크 - 기존 nav span과 시각적으로 동일 */
+.hero-header .header-nav-link {
+  color: inherit;
+  text-decoration: none;
+  font: inherit;
+  transition: opacity .2s ease;
+}
+.hero-header .header-nav-link:hover,
+.hero-header .header-nav-link:focus-visible { opacity: .65; }

@@ -1,0 +1,47 @@
+/* Wide-screen adjustment for collection details only.
+   MacBook layouts below 1700 CSS px remain unchanged. */
+
+/* Fix a constrained #root on collection pages, without changing Home. */
+body:has(.zion-page) { margin: 0; }
+body:has(.zion-page) #root {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  margin: 0;
+}
+body:has(.zion-page) .zion-page {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1700px) {
+  /* Keep composition proportional on iMac without unlimited growth. */
+  .zion-page .vegas-graphics-top { width: min(94%, 2000px); }
+  .zion-page .vegas-graphics-neon {
+    width: min(96%, 2100px);
+    gap: clamp(18px, 2.4vw, 52px);
+  }
+  .zion-page .route66-graphics-stage,
+  .zion-page .horseshoe-graphics-stage {
+    width: min(96%, 2000px);
+  }
+  .zion-page .route66-graphics-stage { height: clamp(700px, 53vw, 1070px); }
+  .zion-page .horseshoe-graphics-stage { height: clamp(650px, 45vw, 950px); }
+
+  .zion-page .zion-campaign-inner {
+    max-width: 2000px;
+    padding-inline: clamp(50px, 4vw, 90px);
+  }
+  .zion-page .vegas-campaign-grid { width: min(100%, 1700px); }
+  .zion-page .zion-product-story-inner {
+    width: min(92%, 1850px);
+    max-width: 1850px;
+  }
+  .zion-page .zion-other-collections-inner {
+    width: min(92%, 1800px);
+    max-width: 1800px;
+  }
+}

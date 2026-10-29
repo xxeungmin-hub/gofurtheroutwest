@@ -130,21 +130,12 @@ export default function SelectedPlacesSection() {
               {stickers.map((item, index) => (
                 <a
                   key={item.id}
-                  href={
-  ["zion-canyon", "vegas-vic", "route-66", "horseshoe-bend"].includes(item.slug)
-    ? item.slug === "zion-canyon"
-      ? "/collections/zion-canyon"
-      : `/collections-preview/${item.slug}`
-    : undefined
-}
+                  href={item.slug === "blue-swallow-motel" ? undefined : `/collections/${item.slug}`}
+                  aria-disabled={item.slug === "blue-swallow-motel" ? "true" : undefined}
+                  onClick={item.slug === "blue-swallow-motel" ? (event) => event.preventDefault() : undefined}
                   className={`scatter-sticker sticker-${item.id}`}
                   aria-label={`${item.name} 상세페이지`}
-                  tabIndex={
-  opened &&
-  ["zion-canyon", "vegas-vic", "route-66", "horseshoe-bend"].includes(item.slug)
-    ? 0
-    : -1
-}
+                  tabIndex={opened && item.slug !== "blue-swallow-motel" ? 0 : -1}
                   style={{
                     "--sticker-x": item.x,
                     "--sticker-y": item.y,

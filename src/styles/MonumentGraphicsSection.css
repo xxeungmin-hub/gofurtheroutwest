@@ -1,0 +1,89 @@
+/* Monument Valley only — collage and cinematic desert foreground */
+.monument-graphics-section {
+  position: relative;
+  width: 100%;
+  background: #000;
+  padding-top: clamp(65px, 7vw, 110px);
+  overflow: hidden;
+}
+.monument-graphics-stage {
+  position: relative;
+  width: min(100%, 1600px);
+  height: clamp(490px, 55vw, 790px);
+  margin: 0 auto;
+  isolation: isolate;
+}
+.monument-graphic {
+  position: absolute;
+  display: block;
+  max-width: none;
+  height: auto;
+  object-fit: contain;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+.monument-graphic-howdy {
+  width: 35%; left: 7%; top: 8%;
+  transform: rotate(-14deg); z-index: 4;
+}
+.monument-graphic-lettering {
+  width: 21%; right: 16%; top: 2%;
+  transform: rotate(14deg); z-index: 5;
+}
+.monument-graphic-cowboy {
+  width: 58%; right: 2%; top: 24%;
+  z-index: 2;
+}
+.monument-graphic-ticket {
+  width: 63%; right: -3%; bottom: 3%;
+  transform: rotate(-14deg); z-index: 5;
+}
+/* Ground in its own flow section, not behind a fixed-height collage. */
+.monument-ground-wrap {
+  position: relative;
+  width: 100%;
+  margin-top: clamp(-130px, -7vw, -55px);
+  line-height: 0;
+  z-index: 3;
+}
+.monument-ground-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.monument-ground-wrap::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: clamp(28px, 4vw, 60px);
+  background: linear-gradient(to bottom, transparent, #000);
+  pointer-events: none;
+}
+@media (max-width: 900px) {
+  .monument-graphics-stage { height: clamp(350px, 64vw, 580px); }
+  .monument-graphic-howdy { width: 40%; left: 4%; top: 10%; }
+  .monument-graphic-lettering { width: 25%; right: 10%; }
+  .monument-graphic-cowboy { width: 65%; right: 0; top: 28%; }
+  .monument-graphic-ticket { width: 72%; right: -5%; bottom: 5%; }
+  .monument-ground-wrap { margin-top: -45px; }
+}
+/* Match the tighter vertical rhythm used for Route 66 */
+.collection-page--monument-valley .zion-product-story-section {
+  padding-top: 75px;
+  padding-bottom: 50px;
+}
+.collection-page--monument-valley .zion-other-collections {
+  padding-top: 55px;
+}
+.collection-page--monument-valley .zion-product-story-glow {
+  width: 100%;
+}
+/* Monument Valley - 그래픽을 바닥 이미지 위로 */
+
+.monument-graphics-stage {
+  z-index: 5;
+}
+
+.monument-ground-wrap {
+  z-index: 1;
+}

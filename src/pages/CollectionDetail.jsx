@@ -1,6 +1,7 @@
 
 import "../styles/Home.css";
 import "../styles/ZionCanyon.css";
+import "../styles/CollectionWideScreen.css";
 import CollectionGallerySection from "../components/CollectionGallerySection.jsx";
 
 import { getCollection } from "../data/collections.js";
@@ -13,6 +14,13 @@ import Route66GraphicsSection from "../components/Route66GraphicsSection.jsx";
 import Route66CampaignSection from "../components/Route66CampaignSection.jsx";
 import HorseshoeGraphicsSection from "../components/HorseshoeGraphicsSection.jsx";
 import HorseshoeCampaignSection from "../components/HorseshoeCampaignSection.jsx";
+import MonumentGraphicsSection from "../components/MonumentGraphicsSection.jsx";
+import MonumentCampaignSection from "../components/MonumentCampaignSection.jsx";
+import PioneerGraphicsSection from "../components/PioneerGraphicsSection.jsx";
+import PioneerCampaignSection from "../components/PioneerCampaignSection.jsx";
+import DeathGraphicsSection from "../components/DeathGraphicsSection.jsx";
+import DeathCampaignSection from "../components/DeathCampaignSection.jsx";
+
 export default function CollectionDetail({
   collectionId = "zion-canyon",
 }) {
@@ -61,7 +69,7 @@ export default function CollectionDetail({
         <header className="hero-header">
           <nav className="nav-left">
             <span>Products</span>
-            <span>Collections</span>
+            <a className="header-nav-link" href="/collections">Collections</a>
             <span>Explore</span>
           </nav>
 
@@ -140,6 +148,12 @@ export default function CollectionDetail({
         <VegasGraphicsSection graphics={collection.graphics} />
       ) : collection.graphics?.layout === "route66-collage" ? (
         <Route66GraphicsSection graphics={collection.graphics} />
+      ) : collection.graphics?.layout === "monument-collage" ? (
+        <MonumentGraphicsSection graphics={collection.graphics} />
+      ) : collection.graphics?.layout === "pioneer-collage" ? (
+        <PioneerGraphicsSection graphics={collection.graphics} />
+      ) : collection.graphics?.layout === "death-collage" ? (
+        <DeathGraphicsSection graphics={collection.graphics} />
       ) : collection.graphics?.layout === "horseshoe-collage" ? (
         <HorseshoeGraphicsSection graphics={collection.graphics} />
       ) : (
@@ -147,6 +161,12 @@ export default function CollectionDetail({
       )}
       {collection.campaign?.layout === "route66-grid" ? (
         <Route66CampaignSection collection={collection} />
+      ) : collection.campaign?.layout === "monument-three" ? (
+        <MonumentCampaignSection collection={collection} />
+      ) : collection.campaign?.layout === "pioneer-grid" ? (
+        <PioneerCampaignSection collection={collection} />
+      ) : collection.campaign?.layout === "death-two" ? (
+        <DeathCampaignSection collection={collection} />
       ) : collection.campaign?.layout === "horseshoe-grid" ? (
         <HorseshoeCampaignSection collection={collection} />
       ) : (

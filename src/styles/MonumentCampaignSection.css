@@ -1,0 +1,50 @@
+/* Monument Valley: three un-cropped portraits in a horizontal row */
+.monument-campaign-section {
+  width: 100%;
+  background: #000;
+  color: #fff;
+  padding: clamp(95px, 9vw, 155px) 0 75px;
+  overflow: hidden;
+}
+.monument-campaign-heading {
+  text-align: center;
+  margin: 0 auto clamp(65px, 6vw, 100px);
+  padding: 0 20px;
+}
+.monument-campaign-title { margin: 0; line-height: 1; }
+.monument-campaign-title img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+.monument-campaign-title-text {
+  font: 900 clamp(52px, 7vw, 130px)/1 "Pretendard", sans-serif;
+}
+.monument-campaign-subtitle {
+  margin: 26px 0 0;
+  font: 600 clamp(16px, 1.2vw, 21px)/1.4 "Pretendard", sans-serif;
+}
+.monument-campaign-photos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(14px, 2vw, 30px);
+  width: min(calc(100% - 96px), 1370px);
+  margin: 0 auto;
+}
+.monument-campaign-photos img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+@media (max-width: 900px) {
+  .monument-campaign-section { padding: 80px 0 55px; }
+  .monument-campaign-photos {
+    width: calc(100% - 36px);
+    gap: 10px;
+  }
+  .monument-campaign-heading { margin-bottom: 48px; }
+}

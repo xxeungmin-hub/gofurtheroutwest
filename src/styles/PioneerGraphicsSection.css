@@ -1,0 +1,70 @@
+/* Pioneertown — collaged flyers above a weathered wooden facade */
+.pioneer-graphics-section { position:relative; width:100%; background:#000; overflow:hidden; padding:clamp(65px,7vw,110px) 0 0; }
+.pioneer-graphics-stage { position:relative; width:min(96%,1680px); height:clamp(490px,47vw,770px); margin:0 auto; isolation:isolate; z-index:2; }
+.pioneer-graphic { position:absolute; display:block; height:auto; max-width:none; object-fit:contain; user-select:none; -webkit-user-drag:none; }
+.pioneer-graphic-newspaper { left:6%; top:21%; width:35%; transform:rotate(-11deg); z-index:2; }
+.pioneer-graphic-sign { left:35%; top:34%; width:26%; transform:rotate(-6deg); z-index:4; }
+.pioneer-graphic-fashion { right:13%; top:2%; width:31%; transform:rotate(8deg); z-index:3; }
+.pioneer-graphic-poster { right:2%; top:17%; width:23%; transform:rotate(-14deg); z-index:2; }
+.pioneer-graphic-sticker { left:33%; top:3%; width:15%; transform:rotate(13deg); z-index:5; }
+.pioneer-ground-wrap { position:relative; z-index:1; width:100%; margin-top:clamp(-145px,-8vw,-65px); line-height:0; overflow:hidden; background:#000; }
+.pioneer-ground-image { display:block; width:100%; height:auto; max-width:none; }
+.pioneer-ground-wrap::after { content:""; position:absolute; bottom:0; left:0; right:0; height:clamp(32px,5vw,80px); background:linear-gradient(to bottom,transparent,#000); pointer-events:none; }
+/* Keep spacing similar to the finished Route 66 page. */
+.collection-page--pioneertown .zion-product-story-section { padding-top:85px; padding-bottom:55px; }
+.collection-page--pioneertown .zion-product-story-glow { width:90%; }
+.collection-page--pioneertown .zion-other-collections { padding-top:55px; }
+@media(max-width:900px) {
+  .pioneer-graphics-stage { height:clamp(350px,64vw,560px); }
+  .pioneer-graphic-newspaper { left:2%; top:22%; width:40%; }
+  .pioneer-graphic-sign { left:34%; top:35%; width:29%; }
+  .pioneer-graphic-fashion { right:10%; width:37%; }
+  .pioneer-graphic-poster { right:-1%; width:27%; }
+  .pioneer-graphic-sticker { left:31%; width:18%; }
+  .pioneer-ground-wrap { margin-top:-35px; }
+}
+
+/* Pioneertown - 목조 건물 표시 영역 */
+
+.pioneer-ground-wrap {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  min-height: 250px;
+  margin-top: -90px;
+  overflow: hidden;
+  background: #000;
+}
+
+.pioneer-ground-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+.pioneer-ground-wrap::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, #000);
+  pointer-events: none;
+}
+/* Pioneertown - 위쪽 그래픽과 목조 건물 간격 축소 */
+
+.pioneer-ground-wrap {
+  margin-top: -190px;
+}
+/* Pioneertown - 투명 이미지 영역이 그래픽을 가리지 않도록 */
+
+.pioneer-ground-wrap {
+  background: transparent;
+  z-index: 1;
+}
+
+.pioneer-graphics-stage {
+  z-index: 3;
+}

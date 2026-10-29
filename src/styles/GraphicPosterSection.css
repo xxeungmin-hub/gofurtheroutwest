@@ -1,47 +1,63 @@
-
+/* Both full-width posters: their ORIGINAL aspect ratios determine height.
+   No 100vh, forced height, cover, or cropping. */
 .graphic-poster-section {
   position: relative;
-  width: 100%;
-  background: #000;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-.graphic-poster-artwork {
-  display: grid;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-.graphic-poster-metal,
-.graphic-poster-image {
-  grid-column: 1;
-  grid-row: 1;
   display: block;
   width: 100%;
-  height: 100%;
-  min-width: 0;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  background: #000;
+  overflow: visible;
 }
-
-/* 아래 쇠 질감 */
-.graphic-poster-metal {
+.graphic-poster-section .graphic-poster-artwork {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+}
+/* First poster: metal and transparent artwork align precisely in one grid cell. */
+.graphic-poster-section .graphic-poster-metal,
+.graphic-poster-section .graphic-poster-image {
+  display: block;
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+.graphic-poster-section .graphic-poster-metal {
   position: relative;
   z-index: 1;
+  height: 100%;
   object-fit: fill;
 }
-
-/* 위 포스터 */
-.graphic-poster-image {
+.graphic-poster-section .graphic-poster-image {
   position: relative;
+  inset: auto;
   z-index: 2;
   height: auto;
+  object-fit: initial;
+  object-position: initial;
 }
-
-/* PC, iMac 화면 모두 가로폭에 맞춤 */
-@media (max-width: 900px) {
-  .graphic-poster-artwork {
-    width: 100%;
-  }
+/* Second poster: the image alone determines full section height. */
+.graphic-poster-section--second,
+.graphic-poster-section--second .graphic-poster-artwork {
+  height: auto;
+  min-height: 0;
+}
+.graphic-poster-section--second .graphic-poster-image {
+  position: static;
+  width: 100%;
+  height: auto;
+  object-fit: initial;
+  max-height: none;
 }

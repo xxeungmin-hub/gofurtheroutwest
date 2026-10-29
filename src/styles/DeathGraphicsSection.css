@@ -1,0 +1,18 @@
+/* Death Valley: floating LP graphics above a full-width concert scene */
+.death-graphics-section { position:relative; width:100%; background:#000; overflow:hidden; padding:clamp(65px,7vw,115px) 0 0; }
+.death-graphics-stage { position:relative; width:min(96%,1600px); height:clamp(460px,47vw,730px); margin:0 auto; z-index:2; isolation:isolate; }
+.death-graphic { position:absolute; display:block; height:auto; max-width:none; object-fit:contain; user-select:none; -webkit-user-drag:none; }
+.death-graphic-package { width:51%; left:1%; top:13%; transform:rotate(-6deg); z-index:2; }
+.death-graphic-logo { width:28%; left:43%; top:9%; transform:rotate(0deg); z-index:3; }
+.death-graphic-guitar { width:31%; right:1%; top:5%; transform:rotate(13deg); z-index:4; }
+/* Ground is independent of the floating collage, so transparent padding will not hide it. */
+.death-graphics-ground-wrap { position:relative; width:100%; margin-top:clamp(-110px,-7vw,-45px); overflow:hidden; z-index:1; line-height:0; background:#000; }
+.death-graphics-ground { display:block; width:100%; height:auto; max-width:none; object-fit:contain; }
+.death-graphics-ground-wrap::after { content:""; pointer-events:none; position:absolute; left:0; right:0; bottom:0; height:clamp(35px,5vw,75px); background:linear-gradient(to bottom,transparent,#000); }
+/* Match the 1600px design stage on wide exhibition displays rather than growing out of control. */
+@media(min-width:1700px) { .collection-page--death-valley .death-graphics-stage { width:min(94%,1800px); height:clamp(700px,43vw,820px); } }
+@media(max-width:900px) { .death-graphics-section { padding-top:65px; } .death-graphics-stage { width:100%; height:clamp(310px,60vw,540px); } .death-graphic-package { width:55%; left:-2%; top:19%; } .death-graphic-logo { width:32%; left:43%; top:17%; } .death-graphic-guitar { width:35%; right:-3%; top:7%; } .death-graphics-ground-wrap { margin-top:-35px; } }
+/* Separate Death Valley spacing only, without changing existing collections. */
+.collection-page--death-valley .zion-product-story-section { padding-top:85px; padding-bottom:60px; }
+.collection-page--death-valley .zion-other-collections { padding-top:55px; }
+.collection-page--death-valley .zion-product-story-glow { width:100%; }

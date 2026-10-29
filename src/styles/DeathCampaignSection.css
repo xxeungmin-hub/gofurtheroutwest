@@ -1,0 +1,15 @@
+/* Two images: left portrait and right LP/vinyl still life, no image cropping. */
+.death-campaign-section { width:100%; background:#000; color:#fff; padding:clamp(110px,10vw,170px) 0 75px; }
+.death-campaign-inner { width:min(88%,1460px); margin:0 auto; }
+.death-campaign-heading { text-align:center; margin-bottom:clamp(70px,7vw,115px); }
+.death-campaign-heading h2 { margin:0; }
+.death-campaign-title { display:block; width:min(51vw,700px); max-width:100%; height:auto; object-fit:contain; margin:0 auto; }
+.death-campaign-fallback { font:900 clamp(48px,7vw,100px)/1 Impact,sans-serif; }
+.death-campaign-heading p { margin:26px 0 0; font:600 clamp(14px,1.2vw,19px)/1.5 "Pretendard",sans-serif; }
+.death-campaign-photos { display:grid; grid-template-columns:minmax(0,36fr) minmax(0,64fr); align-items:center; gap:clamp(28px,6vw,95px); }
+.death-campaign-photo { min-width:0; display:flex; align-items:center; justify-content:center; }
+.death-campaign-photo img { display:block; width:100%; height:auto; max-width:100%; object-fit:contain; }
+.death-campaign-photo-1 { max-width:430px; justify-self:center; }
+.death-campaign-photo-2 { width:100%; justify-self:center; }
+@media(min-width:1700px) { .collection-page--death-valley .death-campaign-inner { width:min(90%,1660px); } }
+@media(max-width:900px) { .death-campaign-inner { width:92%; } .death-campaign-title { width:min(72vw,680px); } .death-campaign-photos { gap:clamp(12px,3vw,30px); grid-template-columns:minmax(0,42fr) minmax(0,58fr); } .death-campaign-heading { margin-bottom:60px; } }
