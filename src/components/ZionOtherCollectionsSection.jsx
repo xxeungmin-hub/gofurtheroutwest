@@ -78,13 +78,20 @@ export default function ZionOtherCollectionsSection() {
               className="zion-other-item"
               key={collection.id}
             >
-              <div className="zion-other-image-wrap">
-                <img
-                  src={collection.image}
-                  alt={collection.name}
-                  loading="lazy"
-                />
-              </div>
+              {collection.id === "blue-swallow-motel" ? (
+                <div className="zion-other-image-wrap" aria-label={`${collection.name} — Coming soon`}>
+                  <img src={collection.image} alt={collection.name} loading="lazy" />
+                </div>
+              ) : (
+                <a
+                  className="zion-other-image-wrap"
+                  href={`/collections/${collection.id === "pioneer-town" ? "pioneertown" : collection.id}`}
+                  aria-label={`${collection.name} 상세페이지로 이동`}
+                  style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
+                >
+                  <img src={collection.image} alt={collection.name} loading="lazy" />
+                </a>
+              )}
 
               <p className="zion-other-name">
                 {collection.name}
